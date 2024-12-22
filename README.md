@@ -1,16 +1,16 @@
-# Super Simple Shell
+# Super Simple Shell 💻
 
-## Overview
+## Overview📝
 Super Simple Shell is a custom Unix-like shell implemented in C. It provides a basic command-line interface to interact with the underlying operating system by executing commands, supporting standard features like argument handling, built-in commands, and error reporting.
 
-## Features
+## Features⚡
 - **Command Execution:** Executes system commands using the `execvp` system call.
 - **Built-in Commands:** Supports internal commands like `cd` (change directory) and `exit` to terminate the shell.
 - **Custom Prompt:** Displays a prompt indicating the current working directory for better context.
 - **Error Handling:** Provides user-friendly error messages for invalid commands and system call failures.
 - **Basic Input Parsing:** Handles input commands and arguments efficiently.
 
-## Installation
+## Installation ⚙
 
 To clone and build the project:
 
@@ -30,7 +30,7 @@ To clone and build the project:
    ./super_simple_shell.exe
    ```
 
-## Usage
+## Usage🚀
 
 1. Start the shell by running:
    ```bash
@@ -49,7 +49,7 @@ To clone and build the project:
    exit
    ```
 
-### Built-in Commands
+### Built-in Commands 🔧
 
 - **`cd`**: Changes the current working directory.
   ```bash
@@ -61,36 +61,36 @@ To clone and build the project:
   exit
   ```
 
-## Code Structure
+## Code Structure 📂
 
 - **cell.c**: Contains the main function, handles user input, and manages the shell loop.
 - **utils.c**: Implements helper functions for command parsing, execution, and built-in commands like `cd` and `exit`.
 - **cell.h**: Declares shared functions and constants used across the project.
 
-## Error Handling
+## Error Handling ⚠️
 
 The shell provides detailed error messages for situations such as:
 - Invalid or unknown commands.
 - System call failures.
 - Incorrect usage of built-in commands.
 
-## Limitations
+## Limitations 🚧
 
 - Advanced features like piping (`|`), I/O redirection (`<`, `>`), and background execution (`&`) are not currently supported.
 - Input parsing is basic and may not handle all edge cases.
 
-## Future Enhancements
+## Future Enhancements 🔮
 
 - Add support for pipelines (`|`) and background tasks (`&`).
 - Improve input parsing to handle more complex command structures.
 - Enhance I/O redirection functionality.
 - Implement command history and tab-completion features.
 
-## License
+## License 📜
 
 This project is open-source and available under the MIT License. Feel free to use, modify, and distribute it.
 
-## Contribution
+## Contribution 🌟
 
 Contributions are welcome! To contribute:
 1. Fork the repository.
