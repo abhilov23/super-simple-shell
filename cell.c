@@ -1,5 +1,69 @@
 #include "cell.h"
 
+t_builtin g_builtin[] ={
+    {.builtin_name="echo", .foo=cell_echo},
+    {.builtin_name="env", .foo=cell_env},
+    {.builtin_name="exit", .foo=cell_exit},
+    {.builtin_name= NULL}
+};
+
+
+int status = 0;
+
+
+void	cell_launch(char **args)
+{
+
+	// Is fork returning 2 values?
+	if (Fork() == CELL_JR)
+	{
+		// replace the current process image with a new process image
+		//v for "vector", p for "path".
+		//Takes an array of arguments and uses PATH to find the executable.
+		//	char *args[] = {"ls", "-l", "-a", NULL};
+		//	execvp("ls", args);
+		Execvp(args[0], args);
+	}
+	else
+	{
+		//Automatically waits for any child process, 
+		//which is often sufficient for beginner-level 
+		//shells that only handle one child process at a time.
+		// FINE for CELL v°1
+		Wait(&status);
+
+		/*
+		Waitpid(cell_jr, &status, 0);
+		*/
+	}
+}
+
+
+
+//looking for execution? if it is a builtin command, then execute it else
+//execute it using fork + execvp + wait function
+// Builtin commands are
+// 1) -echo
+// 2) -env
+// 3) -exit
+
+void cell_exec(char **args){
+
+    int i;
+    const char *curr;
+    i=0;
+    while(curr = g_builtin[i].builtin_name){
+        if(!strcmp(curr, args[0]))
+        {
+          status = g_builtin[i].foo(args); //accessing actual function and call
+            return;
+        }
+        ++i;
+    }
+    cell_launch(args); //fork->exec  
+}
+
+
 //av
 //ls -la file
 // tokens--> [ls]
@@ -77,7 +141,7 @@ int main(int ac, char **av){
        }
         
         //3) Exec
-        
+        cell_exec(args);
         //4) Free
         free(line); //freeing the memory allocated to the line
         free(args); //freeing the memory allocated to args after using it in the loop.
