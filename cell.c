@@ -10,7 +10,8 @@ char *cell_read_line(void){
     buf = NULL; 
     
     Getcwd(cwd, sizeof(cwd)); //Calling the Getcwd for current working directory fish in cli.
-    p(C"🥷 %s "RST" $>", buf); //the interactive shell you are going to look
+    //the interactive shell you are going to look, and it will also display the current working directory using the function defined in utils.c
+    p(C"🥷  %s"RST"$>", cwd); 
 
     if(getline(&buf, &bufsize, stdin) == -1){
 
@@ -33,14 +34,10 @@ char *cell_read_line(void){
 int main(int ac, char **av){
     
     char *line;
-
+    printbanner(); //this will print the banner after the launch of the shell
     //we have to implement REPL : Read, evaluate, print and loop
-    while(0xCE77){
-        
-         // 1) get line
-        line = cell_read_line(); //TODO
-        p("%s\n", line);
-        //pause(); => the pause function pause the program here
+    while(line = cell_read_line()){ //1)getting the line
+         //pause(); => the pause function pause the program here
 
         // 2) get token gettoken
         // => lexing -> parsing EVALUATING

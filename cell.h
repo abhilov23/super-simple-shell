@@ -22,6 +22,7 @@
  //defining a macro for printf
  #define p(...) printf(__VA_ARGS__)
 
- void Getcwd(char *, size_t);
+ void Getcwd(char *, size_t); //for executing getcwd() function for current working directory
+ void printbanner(void); //for the print banner text
 
 #endif
