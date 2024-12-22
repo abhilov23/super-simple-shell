@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /*
 ** Adding ANSI color code for terminal output formatting:
@@ -21,8 +22,12 @@
 
  //defining a macro for printf
  #define p(...) printf(__VA_ARGS__)
+ #define DEL "\n\t \v\f\r"
 
  void Getcwd(char *, size_t); //for executing getcwd() function for current working directory
  void printbanner(void); //for the print banner text
+ void	*Malloc(size_t size);  //for Memory allocation 
+ void	*Realloc(void *ptr, size_t size); /* Memory reallocation */
+
 
 #endif
